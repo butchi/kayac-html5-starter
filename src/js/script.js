@@ -1,10 +1,9 @@
-import Sample from './lib/Sample';
 import $ from 'jquery';
 
-const sample = new Sample({
+const kayacHtml5Starter = new KayacHtml5Starter({
     name: 'world'
 });
 
-$('.wrapper').on('click', () => {
-    console.log(`hello, ${sample.name}.`);
+$(document.body).on('click', () => {
+    kayacHtml5Starter.say();
 });

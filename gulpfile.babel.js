@@ -86,7 +86,10 @@ gulp.task('browser-sync', () => {
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));
-    watch([`${SRC}/js/**/*.js`], gulp.series('browserify', browserSync.reload));
+    watch([`${SRC}/js/**/*.js`], gulp.series(
+        gulp.parallel('browserify', 'browserify-dist'),
+        browserSync.reload
+    ));
     watch([
         `${SRC}/pug/**/*.pug`,
         `${SRC}/config/meta.json`

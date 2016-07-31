@@ -17,7 +17,7 @@ import watch from 'gulp-watch';
 // const
 const SRC = './src';
 const CONFIG = './src/config';
-const DEST = './public';
+const DEST = './demo';
 
 
 // css
@@ -49,7 +49,16 @@ gulp.task('browserify', () => {
         .pipe(gulp.dest(`${DEST}/js`));
 });
 
-gulp.task('js', gulp.parallel('browserify', 'copy-bower'));
+gulp.task('browserify-dist', () => {
+    return browserify(`${SRC}/js/KayacHtml5Starter.js`)
+        .transform(babelify)
+        .transform(debowerify)
+        .bundle()
+        .pipe(source('KayacHtml5Starter.js'))
+        .pipe(gulp.dest('.'));
+});
+
+gulp.task('js', gulp.parallel('browserify', 'browserify-dist', 'copy-bower'));
 
 
 // html
@@ -71,8 +80,9 @@ gulp.task('html', gulp.series('pug'));
 gulp.task('browser-sync', () => {
     browserSync({
         server: {
-            baseDir: DEST
-        }
+            baseDir: '.'
+        },
+        startPath: DEST
     });
 
     watch([`${SRC}/scss/**/*.scss`], gulp.series('sass', browserSync.reload));

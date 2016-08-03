@@ -41,7 +41,7 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - Javascript: [ES2015(ECMAScript 6)](https://babeljs.io/docs/learn-es2015/)
 
 ## 対応ブラウザ
-- 各種モダンブラウザ最新バージョン・IE9以上
+- 各種モダンブラウザ最新バージョン・IE10以上
   - 対応ブラウザを変更する場合、`src/config/pleeease.json`の`autoprefixer.browsers`を修正することをお忘れなく
   - またIE8に対応する場合は、bowerのjQueryを1系にすることもお忘れなく
 
@@ -56,5 +56,4 @@ shellから以下のコマンドを実行することで、各種ビルド・タ
 - [pleeease](http://pleeease.io/)
 - [browser-sync](https://www.browsersync.io/)
 - [jQuery](https://jquery.com/)
-- [html5shiv](https://github.com/afarkas/html5shiv)
 - [Reset CSS](http://meyerweb.com/eric/tools/css/reset/)
